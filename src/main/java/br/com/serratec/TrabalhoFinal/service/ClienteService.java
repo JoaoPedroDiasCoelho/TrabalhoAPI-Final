@@ -1,5 +1,7 @@
 package br.com.serratec.TrabalhoFinal.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -12,7 +14,6 @@ import br.com.serratec.TrabalhoFinal.exception.DatabaseException;
 import br.com.serratec.TrabalhoFinal.exception.ResourceNotFoundException;
 import br.com.serratec.TrabalhoFinal.repository.IClienteRepository;
 import jakarta.persistence.EntityNotFoundException;
-import java.util.Optional;
 
 @Service
 public class ClienteService {
