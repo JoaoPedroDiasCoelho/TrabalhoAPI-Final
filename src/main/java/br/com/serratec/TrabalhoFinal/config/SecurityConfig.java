@@ -73,7 +73,7 @@ public class SecurityConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                     // ESSENCIAL: Permitir a origem do React
-                    .allowedOrigins("http://localhost:8080") 
+                    .allowedOrigins("https://react-spring-connect.vercel.app") 
                     .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") 
                     .allowedHeaders("*") 
                     .allowCredentials(true); 

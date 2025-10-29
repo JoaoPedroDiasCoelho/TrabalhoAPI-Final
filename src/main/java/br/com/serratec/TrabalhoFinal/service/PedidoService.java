@@ -33,9 +33,6 @@ public class PedidoService {
     @Autowired
     private IProdutoRepository produtoRepository;
 
-    @Autowired
-    private IItempedidoRepository itemPedidoRepository;
-
     @Transactional(readOnly = true)
     public Page<PedidoDTO> findAllPaged(Pageable pageable) {
         Page<Pedido> page = pedidoRepository.findAll(pageable);
