@@ -24,6 +24,7 @@ public class ClienteDTO {
         this.id = entity.getId();
         this.nome = entity.getNome();
         this.telefone = entity.getTelefone();
+		this.senha = entity.getSenha();
         this.email = entity.getEmail();
         this.cpf = entity.getCpf();
         this.cep = entity.getCep();

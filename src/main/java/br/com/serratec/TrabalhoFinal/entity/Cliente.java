@@ -38,6 +38,8 @@ public class Cliente implements UserDetails {
     @Column(nullable = false, unique = true, length = 11)
     private String cpf;
 
+	private String role = "ROLE_USER";
+
     @NotBlank
     private String senha;
     
@@ -151,7 +153,7 @@ public class Cliente implements UserDetails {
 	@Override
 	//Metodo para retorna o papel de autoridade simples do usuario
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-	    return List.of(new SimpleGrantedAuthority("ROLE_CLIENTE"));
+	    return List.of(new SimpleGrantedAuthority(role));
 	}
 
 

@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -40,7 +42,6 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/login").permitAll()
                 
                 .requestMatchers(HttpMethod.GET, "/api/products").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/products").permitAll()
                 
                 .requestMatchers(HttpMethod.GET, "/categorias").permitAll()
@@ -73,11 +74,15 @@ public class SecurityConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                     // ESSENCIAL: Permitir a origem do React
-                    .allowedOrigins("https://react-spring-connect.vercel.app") 
+                    .allowedOrigins("https://react-spring-connect.vercel.app", "http://localhost:8080") 
                     .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") 
-                    .allowedHeaders("*") 
-                    .allowCredentials(true); 
+                    .allowedHeaders("*");
             }
         };
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(); 
     }
 }

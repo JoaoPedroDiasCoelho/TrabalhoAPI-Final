@@ -17,6 +17,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/api/products")
+@CrossOrigin(origins = "http://localhost:8080")
 public class ProdutoController {
 
     @Autowired
