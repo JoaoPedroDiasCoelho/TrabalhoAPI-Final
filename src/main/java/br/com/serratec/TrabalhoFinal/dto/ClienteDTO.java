@@ -112,5 +112,13 @@ public class ClienteDTO {
 	public void setUf(String uf) {
 		this.uf = uf;
 	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
     
 }
