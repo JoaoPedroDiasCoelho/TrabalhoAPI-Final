@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 
 @Entity
 @Table(name = "tb_item_pedido")
@@ -22,6 +25,7 @@ public class ItemPedido {
 
     @ManyToOne
     @JoinColumn(name = "produto_id", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
     private Produto produto;
 
     @Column(nullable = false)

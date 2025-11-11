@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.serratec.TrabalhoFinal.dto.ProdutoDTO;
+import br.com.serratec.TrabalhoFinal.entity.Produto;
 import br.com.serratec.TrabalhoFinal.service.ProdutoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -30,9 +31,9 @@ public class ProdutoController {
     		@ApiResponse(responseCode = "500", description = "Erro interno no servidor")
     })
     @GetMapping
-    public ResponseEntity<Page<ProdutoDTO>> findAll(Pageable pageable) {
-        Page<ProdutoDTO> page = service.findAllPaged(pageable);
-        return ResponseEntity.ok().body(page);
+    public ResponseEntity<Page<ProdutoDTO>> findAll(@RequestParam(value = "nome", defaultValue = "") String nome, Pageable pageable) {
+        Page<ProdutoDTO> list = service.findAllPaged(nome, pageable); 
+        return ResponseEntity.ok().body(list);
     }
 
     

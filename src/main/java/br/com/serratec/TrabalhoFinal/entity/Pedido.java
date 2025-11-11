@@ -30,7 +30,7 @@ public class Pedido {
     @Column(nullable = false)
     private StatusPedido status;
 
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemPedido> itens = new ArrayList<>();
 
     public Double getTotal() {

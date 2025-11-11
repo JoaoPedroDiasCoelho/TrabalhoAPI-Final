@@ -43,10 +43,11 @@ public class SecurityConfig {
                 
                 .requestMatchers(HttpMethod.GET, "/api/products").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/products").permitAll()
+                .requestMatchers(HttpMethod.DELETE, "/api/products").permitAll()
                 
                 .requestMatchers(HttpMethod.GET, "/categorias").permitAll()
                 
-                .anyRequest().permitAll()
+                .anyRequest().authenticated()
             )
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .headers(headers -> headers.frameOptions().disable());

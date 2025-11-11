@@ -40,9 +40,16 @@ public class ProdutoService {
         entity.setCategoria(categoria);
     }
 
-    public Page<ProdutoDTO> findAllPaged(Pageable pageable) {
-        Page<Produto> page = repository.findAll(pageable);
-        return page.map(ProdutoDTO::new);
+    public Page<ProdutoDTO> findAllPaged(String nome, Pageable pageable) {
+    Page<Produto> page;
+
+    if (nome == null || nome.isBlank()) {
+        page = repository.findAll(pageable); 
+    } else {
+        page = repository.findByNomeContainingIgnoreCase(nome, pageable);
+    }
+    
+    return page.map(ProdutoDTO::new);
     }
 
     public ProdutoDTO findById(Long id) {
@@ -76,7 +83,7 @@ public class ProdutoService {
         try {
             repository.deleteById(id);
         } catch (DataIntegrityViolationException e) {
-            throw new DatabaseException("integridade violada");
+            throw new DatabaseException("integridade ESCARALHADA");
         }
     }
 }
